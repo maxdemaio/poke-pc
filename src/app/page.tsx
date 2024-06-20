@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useEffect, useState } from "react";
+import PokeAPI, { IPokemon } from "pokeapi-typescript";
 
 const pokeNameList: string[] = [
   "pikachu",
@@ -34,25 +35,20 @@ const pokeNameList: string[] = [
 const API_URL: string = "https://pokeapi.co/api/v2/pokemon/";
 
 export default function Home() {
-  const [pokemon, setPokemon] = useState<any[]>([]);
+  const [pokemon, setPokemon] = useState<IPokemon[]>([]);
   const [loading, setLoading] = useState(true);
-  const [selectedPokemon, setSelectedPokemon] = useState<any | null>(null);
+  const [selectedPokemon, setSelectedPokemon] = useState<IPokemon | null>(null);
 
   useEffect(() => {
     const fetchData = async () => {
       try {
-        setLoading(true);
-        // Fetch pokemon data by appending the pokemon name to the API URL
-        // and then log the data to the console
         const pokeResponses = await Promise.all(
-          pokeNameList.map((p) =>
-            fetch(`${API_URL}${p}`).then((res) => res.json())
-          )
+          pokeNameList.map((name) => PokeAPI.Pokemon.resolve(name))
         );
         console.log(pokeResponses);
         setPokemon(pokeResponses);
-      } catch (err) {
-        console.error(err);
+      } catch (error) {
+        console.error(error);
         // toast({
         //   title: "Error",
         //   description: "Failed to fetch top items.",
@@ -67,7 +63,7 @@ export default function Home() {
     // clean up toast
   }, []);
 
-  const handleClick = (pokemon: any) => {
+  const handleClick = (pokemon: IPokemon) => {
     setSelectedPokemon(pokemon);
   };
 
