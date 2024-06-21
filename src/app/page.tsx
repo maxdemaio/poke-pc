@@ -124,21 +124,24 @@ export default function Home() {
                 <li
                   onClick={() => handleClick(p)}
                   key={p.id}
-                  className="transition-all duration-300 items-start justify-center w-[70px] h-[70px] bg-white/10 hover:bg-white/60 rounded-2xl cursor-pointer group relative flex gap-2"
+                  className="p-2 pb-6 transition-all duration-300 items-start justify-center bg-white/10 hover:bg-white/60 rounded-2xl cursor-pointer group relative"
                 >
                   {/* Gen 8 sword/shield */}
                   {/* Gen 7 alola */}
-                  <img
-                    width={68}
-                    height={56}
-                    className="transition-all group-hover:scale-125 duration-300"
-                    src={
-                      p.sprites.versions["generation-viii"].icons.front_default
-                    }
-                    alt={p.name}
-                  />
-                  <div className="absolute -bottom-2 right-3">
-                    <Icons.heart />
+                  <div className="relative w-full">
+                    <img
+                      width={68}
+                      height={56}
+                      className="transition-all group-hover:scale-125 duration-300"
+                      src={
+                        p.sprites.versions["generation-viii"].icons
+                          .front_default
+                      }
+                      alt={p.name}
+                    />
+                    <div className="absolute -bottom-2 right-3">
+                      <Icons.heart />
+                    </div>
                   </div>
                 </li>
               ))}
