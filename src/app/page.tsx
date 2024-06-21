@@ -124,7 +124,7 @@ export default function Home() {
                 <li
                   onClick={() => handleClick(p)}
                   key={p.id}
-                  className="cursor-pointer group relative flex gap-2 items-end"
+                  className="transition-all duration-300 items-start justify-center w-[70px] h-[70px] bg-white/10 hover:bg-white/60 rounded-2xl cursor-pointer group relative flex gap-2"
                 >
                   {/* Gen 8 sword/shield */}
                   {/* Gen 7 alola */}
