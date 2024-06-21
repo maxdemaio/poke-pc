@@ -2,6 +2,7 @@
 
 import React, { useEffect, useState } from "react";
 import PokeAPI, { IPokemon } from "pokeapi-typescript";
+import { Icons } from "./components/icons";
 
 const pokeNameList: string[] = [
   "pikachu",
@@ -15,7 +16,7 @@ const pokeNameList: string[] = [
   "raichu",
   "ditto",
   "hitmonlee",
-  "raichu-alola",
+  // "raichu-alola",
   "wingull",
   "metapod",
   "onix",
@@ -79,7 +80,7 @@ export default function Home() {
       </div>
 
       <div className="flex gap-4">
-        <div className="border border-neutral-400">
+        <div className="rounded-md border border-neutral-400 p-4 flex flex-col gap-2">
           <div className="flex justify-between">
             <span>
               {selectedPokemon ? selectedPokemon.name : "No Pokemon Selected"}
@@ -100,14 +101,14 @@ export default function Home() {
               "Pokemon image"
             )}
           </div>
-          <div className="flex justify-between">
+          <div className="flex justify-between rounded-md p-2 border border-[#D0C8B8]">
             <span>Level</span>
             <span>Saved Stuff</span>
           </div>
-          <div>Ability</div>
-          <div>Item</div>
+          <div className="rounded-md p-2 border border-[#D0C8B8]">Ability</div>
+          <div className="rounded-md p-2 border border-[#D0C8B8]">Item</div>
         </div>
-        <div className="relative p-4 flex flex-col w-full border border-neutral-400">
+        <div className="rounded-md relative p-4 flex flex-col w-full border border-neutral-400">
           <div className="self-center flex gap-2">
             <span>left</span>
             <div className="px-8">Box 1</div>
@@ -123,18 +124,22 @@ export default function Home() {
                 <li
                   onClick={() => handleClick(p)}
                   key={p.id}
-                  className="relative flex gap-2 items-end"
+                  className="cursor-pointer group relative flex gap-2 items-end"
                 >
                   {/* Gen 8 sword/shield */}
                   {/* Gen 7 alola */}
                   <img
                     width={68}
                     height={56}
+                    className="transition-all group-hover:scale-125 duration-300"
                     src={
                       p.sprites.versions["generation-viii"].icons.front_default
                     }
                     alt={p.name}
                   />
+                  <div className="absolute -bottom-2 right-3">
+                    <Icons.heart />
+                  </div>
                 </li>
               ))}
             </ul>
