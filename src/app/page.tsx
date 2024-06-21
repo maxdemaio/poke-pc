@@ -4,6 +4,7 @@ import React, { useEffect, useState } from "react";
 import PokeAPI, { IPokemon } from "pokeapi-typescript";
 import { Icons } from "./components/icons";
 
+
 const pokeNameList: string[] = [
   "pikachu",
   "charizard",
@@ -32,8 +33,6 @@ const pokeNameList: string[] = [
   "poochyena",
   "lucario",
 ];
-
-const API_URL: string = "https://pokeapi.co/api/v2/pokemon/";
 
 export default function Home() {
   const [pokemon, setPokemon] = useState<IPokemon[]>([]);
@@ -81,11 +80,10 @@ export default function Home() {
 
       <div className="flex gap-4">
         <div className="rounded-md border border-neutral-400 p-4 flex flex-col gap-2">
-          <div className="flex justify-between">
-            <span>
+          <div className="flex justify-center capitalize">
+            <span className={`tracking-tight text-xl`}>
               {selectedPokemon ? selectedPokemon.name : "No Pokemon Selected"}
             </span>
-            <span>gender</span>
           </div>
           <div className="flex items-center justify-center w-[200px] h-[200px]">
             {selectedPokemon ? (
