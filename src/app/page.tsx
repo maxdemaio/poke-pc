@@ -119,7 +119,7 @@ export default function Home() {
               <p>Loading...</p>
             </div>
           ) : (
-            <ul className="flex flex-wrap gap-4">
+            <ul className="flex flex-wrap gap-1">
               {pokemon.map((p) => (
                 <li
                   onClick={() => handleClick(p)}
